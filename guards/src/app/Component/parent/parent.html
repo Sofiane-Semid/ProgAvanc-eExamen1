@@ -1,0 +1,14 @@
+
+ <div>
+        <input type="checkbox" [(ngModel)]="sel" (ngModelChange)="updateSalty()">
+        <label for="option1">Option 1</label>
+    </div>
+    
+    <div>
+        <input type="checkbox" [(ngModel)]="sucre" (ngModelChange)="updateSweet()">
+        <label for="option2">Option 2</label>
+    </div>
+
+    <a href="/caramelAuSel">J'ai faim</a>
+
+<router-outlet> </router-outlet>
