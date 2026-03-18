@@ -1,0 +1,41 @@
+<form [formGroup]="catform">
+
+
+  <mat-form-field>
+    <label>Quel est votre animal favoris?</label>
+    <input matInput type="text" placeholder="Il faut répondre chat" formControlName="Question1" />
+
+    @if(catform.get('Question1')?.hasError('fauxAnimal')) {
+    <mat-error> Vous devez préférer le chat! </mat-error>
+    }
+
+    @if(catform.get('Question1')?.hasError('required')) {
+    <mat-error>Champ requis</mat-error>
+    }
+
+  </mat-form-field>
+
+
+
+  <mat-form-field>
+    <label>Vous preferez les chat ou l'informatique ?</label>
+    <input matInput type="Text" placeholder="Il faut repondre oui" formControlName="Question2" />
+
+    @if(catform.get('Question2')?.hasError('fauxChoix')) {
+    <mat-error> Vous devez répondre oui! </mat-error>
+    }
+
+    @if(catform.get('Question2')?.hasError('required')) {
+    <mat-error>Champ requis</mat-error>
+    }
+  </mat-form-field>
+
+  @if(catform.hasError('uneErreur')) {
+  <mat-error>N'importe quoi!</mat-error>
+  }
+
+  <button mat-raised-button color="primary" [disabled]="!catform.valid">
+    Enregistrer
+  </button>
+
+</form>
