@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using labo.signalr.api.Data;
+using Microsoft.AspNetCore.SignalR;
+using labo.signalr.api.TaskHub;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,18 +17,27 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 // TODO: SignalR: Ajouter SignalR
+builder.Services.AddSignalR();
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", builder => builder
-        .WithOrigins("http://localhost:4200", "https://localhost:4200")
+        .WithOrigins("http://localhost:64219", "https://localhost:64219")
         .AllowAnyMethod()
         .AllowAnyHeader()
         .AllowCredentials());
 });
 
 var app = builder.Build();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -57,6 +68,7 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 // TODO: SignalR: Ajouter la route vers le Hub
+app.MapHub<TaskHub>("/taskhub");
 
 app.Run();
 

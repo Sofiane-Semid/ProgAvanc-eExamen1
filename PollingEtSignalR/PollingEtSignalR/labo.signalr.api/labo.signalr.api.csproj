@@ -10,12 +10,6 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
   <ItemGroup>
-    <Compile Remove="Hubs\**" />
-    <Content Remove="Hubs\**" />
-    <EmbeddedResource Remove="Hubs\**" />
-    <None Remove="Hubs\**" />
-  </ItemGroup>
-  <ItemGroup>
     <None Remove="Hubs\" />
     <None Remove="Services\" />
   </ItemGroup>
@@ -29,5 +23,8 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.4" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\NewFolder\" />
   </ItemGroup>
 </Project>
